@@ -34,15 +34,16 @@
         <div>
           <div class="eyebrow">
             <span class="dot-live"></span>
-            <span>Локальный MCP для Chrome · Без облака</span>
+            <span>Любой MCP-агент · Локальный Chrome · Без облака</span>
           </div>
-          <h1>Дайте ИИ руки и глаза в <span class="grad-text">вашем обычном Chrome</span></h1>
+          <h1>Дайте любому ИИ руки и глаза в <span class="grad-text">вашем обычном Chrome</span></h1>
           <p class="hero-lead">
-            Max Browser превращает открытый браузер в точный инструмент автоматизации: ИИ сам открывает сайты, заполняет формы, собирает таблицы, проверяет вёрстку и работает с API, используя ваши текущие вкладки и сессии — при этом тратит в разы меньше токенов.
+            <strong>Подходит к любому ИИ-агенту и любой модели</strong> по открытому стандарту MCP: Claude, Gemini, GPT или локальные LLM. Агент работает прямо в вашем браузере с открытыми сессиями, а вся внутренняя логика управления браузером максимально ускорена и экономит токены.
           </p>
           <div class="hero-cta">
             <a class="btn btn-primary" href="#tools">Смотреть все 83 инструмента</a>
-            <a class="btn" href="#quickstart">Как пользоваться</a>
+            <a class="btn" href="#quickstart">Как подключить</a>
+            <a class="btn btn-ghost" href="https://github.com/DanielLetto2020/max-browser-mcp" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
           </div>
           <div class="hero-trust">
             <div class="metric-chip">
@@ -95,6 +96,18 @@
         </div>
 
         <div class="bento-grid">
+          <article class="bento-card span-12">
+            <div class="card-icon">MCP</div>
+            <h3>Работает с любым ИИ-агентом и любой моделью</h3>
+            <p>Max Browser говорит на стандартном протоколе <strong>STDIO MCP</strong> без привязки к одному сервису или нейросети. Подключите его один раз — и браузером сможет управлять любой ваш агент: от лёгких быстрых моделей для рутины до флагманских моделей для сложной аналитики и QA.</p>
+            <div class="demo-stats">
+              <span class="pill accent">Claude Code · Antigravity</span>
+              <span class="pill accent">Cursor · Windsurf · Cline</span>
+              <span class="pill info">VS Code / Copilot · Zed · Codex CLI</span>
+              <span class="pill">Свои скрипты на Python / JS</span>
+            </div>
+          </article>
+
           <article class="bento-card span-7">
             <div class="card-icon">01</div>
             <h3>Надёжные действия вместо «слепых» кликов</h3>
@@ -218,6 +231,12 @@
             <span class="pill info">Авто-принятие cookie-баннеров (dismissCookies)</span>
             <span class="pill">Передача ответов до 32 МБ чанками</span>
           </div>
+          <div class="speed-honest">
+            <strong>От чего на самом деле зависит скорость?</strong>
+            <p>
+              Общее время сценария всегда складывается из двух частей: как быстро думает сама выбранная ИИ-модель и как быстро реагирует браузер. На скорость «раздумий» конкретной нейросети мы повлиять не можем — лёгкая модель отвечает быстрее, тяжёлая дольше. <strong>Зато вся логика управления внутри Max Browser максимально ускорена</strong>: команды долетают за миллисекунды без лишних пересылок, несколько действий склеиваются в один шаг, а благодаря коротким и чистым снимкам страницы даже сама модель читает меньше лишнего и быстрее принимает решение.
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -307,16 +326,16 @@
           <div class="bento-card span-12">
             <h3>Полезные команды терминала</h3>
             <div class="cmd-row">
-              <span class="cmd-text">cd ~/.local/share/max-browser && ./install.sh --test --sync-bundle</span>
-              <button class="btn btn-sm copy-btn" type="button" data-copy="cd ~/.local/share/max-browser && ./install.sh --test --sync-bundle">Копировать</button>
+              <span class="cmd-text">git clone https://github.com/DanielLetto2020/max-browser-mcp.git && cd max-browser-mcp && ./install.sh</span>
+              <button class="btn btn-sm copy-btn" type="button" data-copy="git clone https://github.com/DanielLetto2020/max-browser-mcp.git && cd max-browser-mcp && ./install.sh">Копировать</button>
             </div>
             <div class="cmd-row">
-              <span class="cmd-text">python3 ~/.local/share/max-browser/bridge.py --profile core</span>
-              <button class="btn btn-sm copy-btn" type="button" data-copy="python3 ~/.local/share/max-browser/bridge.py --profile core">Копировать</button>
+              <span class="cmd-text">python3 ./bridge.py --profile core</span>
+              <button class="btn btn-sm copy-btn" type="button" data-copy="python3 ./bridge.py --profile core">Копировать</button>
             </div>
             <div class="cmd-row">
-              <span class="cmd-text">python3 ~/max-browser-playground/run_qa.py</span>
-              <button class="btn btn-sm copy-btn" type="button" data-copy="python3 ~/max-browser-playground/run_qa.py">Копировать</button>
+              <span class="cmd-text">./install.sh --no-hosts --test</span>
+              <button class="btn btn-sm copy-btn" type="button" data-copy="./install.sh --no-hosts --test">Копировать</button>
             </div>
           </div>
         </div>
@@ -326,7 +345,7 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <div><strong>Max Browser v3.0.0</strong> · Локальный MCP-мост для Chrome (83 инструмента)</div>
+      <div><strong>Max Browser v3.0.0</strong> · Локальный MCP-мост для Chrome (83 инструмента) · <a class="footer-link" href="https://github.com/DanielLetto2020/max-browser-mcp" target="_blank" rel="noopener noreferrer">GitHub</a> · <a class="footer-link" href="https://github.com/DanielLetto2020/max-browser-mcp/releases/latest" target="_blank" rel="noopener noreferrer">Релизы</a></div>
       <div>Нажмите на иконку расширения на панели Chrome для паузы, режима Read-Only или записи действий.</div>
     </div>
   </footer>

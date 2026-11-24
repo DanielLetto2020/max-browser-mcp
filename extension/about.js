@@ -322,7 +322,10 @@ const diag   = await diagnostics_get({ summaryOnly: true });`,
 
   function loadLiveStatus() {
     if (typeof chrome === 'undefined' || !chrome.runtime?.sendMessage) {
-      liveConn.textContent = 'Режим превью';
+      liveConn.textContent = 'Веб-лендинг (GitHub Pages)';
+      liveSess.textContent = 'Установите расширение';
+      liveSpeed.disabled = true;
+      liveSpeed.title = 'Переключение скорости работает при открытии страницы внутри расширения Chrome';
       return;
     }
     chrome.runtime.sendMessage({ type: 'POPUP_GET_STATE' }, st => {

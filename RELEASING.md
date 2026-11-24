@@ -4,17 +4,17 @@
 
 > **Mandatory Rule:** Publishing a new release, merging `dev` into `main`, pushing tags (`v*`), or creating a GitHub Release **MUST NEVER** happen automatically or without **explicit approval from the repository owner (`DanielLetto2020`)**.
 
-- Ongoing development always happens on the **`dev`** branch.
-- The **`main`** branch is strictly reserved for approved releases and is protected by GitHub Repository Rulesets.
+- Ongoing development always happens on the **local-only `dev`** branch (`dev` is never pushed to GitHub).
+- The **`main`** branch is the only public branch on GitHub, strictly reserved for approved releases and protected by GitHub Repository Rulesets.
 - Release tags (`v*`) are protected by GitHub Repository Rulesets so only the repository owner/admin can create, update, or delete them.
 - The manual helper script [`scripts/release.sh`](scripts/release.sh) **refuses to run** unless `--approved` is explicitly passed after owner sign-off.
 
 ## 2. Branching Model
 
-| Branch | Purpose | Who Can Merge / Push |
+| Branch | Visibility | Purpose |
 | :--- | :--- | :--- |
-| `dev` | Active local development, fixes, new features, tests | Local developers / PRs |
-| `main` | Clean released snapshots only | Repository owner after explicit release approval |
+| `dev` | **Local-only** (never pushed) | Active local development, fixes, new features, tests |
+| `main` | **Public** (default branch on GitHub) | Clean released snapshots pushed only by the repository owner after explicit release approval |
 
 ## 3. Versioning Scheme (`3.0.<commit_count>`)
 

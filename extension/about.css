@@ -605,6 +605,39 @@ h3 {
   color: var(--ink-2);
 }
 
+.speed-honest {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  background: var(--accent-bg);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+}
+
+.speed-honest strong {
+  display: block;
+  font-size: 14px;
+  color: var(--ink);
+  margin-bottom: 5px;
+}
+
+.speed-honest p {
+  margin: 0;
+  font-size: 13.5px;
+  color: var(--ink-2);
+  line-height: 1.55;
+}
+
+.footer-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 4px;
+  color: var(--accent-strong);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 /* Catalog Controls & Grid */
 .catalog-controls {
   display: flex;

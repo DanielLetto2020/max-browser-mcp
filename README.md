@@ -5,13 +5,15 @@
 **English** | [Русский](README.ru.md)
 
 [![Version](https://img.shields.io/badge/version-v3.0.0-6366f1?style=flat-square)](https://github.com/DanielLetto2020/max-browser-mcp/releases)
+[![Live Landing](https://img.shields.io/badge/landing-GitHub%20Pages-0ea5e9?style=flat-square)](https://danielletto2020.github.io/max-browser-mcp/)
 [![License: MIT-0](https://img.shields.io/badge/license-MIT--0-10b981?style=flat-square)](LICENSE)
 [![MCP Tools](https://img.shields.io/badge/MCP%20Tools-83-0ea5e9?style=flat-square)](#complete-tool-groups-83-tools)
 [![Manifest V3](https://img.shields.io/badge/Chrome-Manifest%20V3-f59e0b?style=flat-square)](extension/manifest.json)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776ab?style=flat-square)](bridge.py)
 
 **Standalone local Chrome MV3 extension + Native Messaging host + STDIO MCP server.**  
-Control your live Chrome browser from AI agents and scripts with **83 tools**, **>50% fewer schema tokens**, **single-IPC batch execution**, and **zero cloud dependencies**.
+Connect **any MCP-compatible AI agent and any model** to your live Chrome browser with **83 tools**, **>50% fewer schema tokens**, **single-IPC batch execution**, and **zero cloud dependencies**.  
+Live showcase: **[danielletto2020.github.io/max-browser-mcp](https://danielletto2020.github.io/max-browser-mcp/)**
 
 </div>
 
@@ -24,6 +26,11 @@ Unlike headless Playwright or Puppeteer runners that launch clean disposable bro
 - **Live Browser & Real Sessions**: Keeps your existing tabs, logins, cookies, extensions, and proxy/VPN environment.
 - **100% Local & Zero Runtime Dependencies**: Pure Python stdlib bridge (`bridge.py`), Chrome Native Messaging, private `0600` Unix socket (`run/browser.sock`), and vanilla MV3 JavaScript — no Node runtime or npm packages required in production.
 - **Built for AI Efficiency**: Engineered specifically to cut LLM token usage and round-trip latency without sacrificing reliability.
+
+## Works with Any AI Agent & Honest Speed Model
+
+- **Any MCP Client, Any Model**: Uses the open **STDIO MCP** standard, so any agent — **Claude Code, Antigravity, Cursor, Windsurf, Cline, Zed, VS Code / Copilot, Codex CLI**, or your own Python/JS script — works out of the box with Claude, Gemini, GPT, or local LLMs.
+- **What Actually Controls Speed**: Total task duration depends on two halves: how fast the **chosen AI model thinks** between steps, and how fast the **browser executes** each action. Max Browser cannot speed up an external LLM's inference time, **so we eliminated the browser-side bottlenecks instead**: persistent `fast-dom.js` RPC, single-IPC `batch` flows, reused debugger sessions, and compact `afterSnapshot` diffs mean Chrome executes in milliseconds and sends the model far less noise to read — helping even slower models finish in fewer turns.
 
 ## Architecture
 
@@ -143,8 +150,8 @@ Token-saving `core` profile (24 schemas in `tools/list`, all 83 still callable):
 ## Branching, Versioning & Release Policy
 
 - **Branches**:
-  - `dev` — active local development branch.
-  - `main` — stable release-only branch (protected).
+  - `dev` — **local-only** development branch (never pushed to the public GitHub remote).
+  - `main` — the only public branch on GitHub, reserved for stable approved snapshots and releases (protected).
 - **Versioning (`3.0.<commit_count>`)**:
   - Initial public release: **`3.0.0`**
   - Subsequent releases follow **`3.0.<N>`** strictly (`3.0.1`, `3.0.2`, ..., `3.0.1252`), where `<N>` is the number of development commits since `v3.0.0`.

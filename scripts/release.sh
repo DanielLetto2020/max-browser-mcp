@@ -87,4 +87,4 @@ git archive --format=zip --prefix=max-browser-mcp/ -o "$ZIP_OUT" "$NEXT_TAG"
 git checkout dev
 
 echo "Release $NEXT_TAG prepared locally on 'main' and built $ZIP_OUT."
-echo "Push with: git push origin main && git push origin dev && git push origin $NEXT_TAG"
+echo "Push with: git push origin main && git push origin $NEXT_TAG"
