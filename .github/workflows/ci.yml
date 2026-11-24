@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+  pull_request:
+    branches:
+      - main
+      - dev
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Check shell scripts
+        run: |
+          sh -n native-host
+          bash -n install.sh scripts/check_privacy.sh scripts/release.sh
+
+      - name: Run syntax checks and unit tests
+        run: ./install.sh --no-hosts --test
+
+      - name: Run privacy and hygiene scan
+        run: ./scripts/check_privacy.sh

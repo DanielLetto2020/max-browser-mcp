@@ -1,0 +1,46 @@
+{
+  "manifest_version": 3,
+  "name": "Max Browser",
+  "version": "3.0.0",
+  "description": "Local MCP browser automation bridge for Chrome (83 tools)",
+  "permissions": [
+    "nativeMessaging",
+    "tabs",
+    "scripting",
+    "debugger",
+    "tabGroups",
+    "downloads",
+    "storage",
+    "alarms",
+    "cookies",
+    "clipboardRead",
+    "clipboardWrite",
+    "bookmarks",
+    "history"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["dom.js", "fast-dom.js"],
+      "run_at": "document_start",
+      "all_frames": true
+    },
+    {
+      "matches": ["<all_urls>"],
+      "js": ["cursor-motion.js", "visual-indicator.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Max Browser",
+    "default_popup": "popup.html"
+  },
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwbUFbfEsrcy54Gwa12l8pIBjgcrwUSci5V6fajY9LhoFVhDzz0ij+NFA2ZhgJmdEQ8Vx/UnQUPkZBnS3E65EiCM0yein09PQA1cgv0Fwx6XmL2C0bsZnRg7gpI2JjB9X/mNW9+Fy/f0jMwY4vJ/zgcJiQivjWgYg6/UUxS7aVvDp6jIy/cCEYeOrGotcZNof4vT1zSzHO+FlfAM9oTen15eXBbaXGTsc51Lzg8g/M40zFgOAIg4+yqVxNgGAtaPz2PeitJD2jqVVcMUo0jS5GzzZae0okoSlkuLFvWIbwVZGnfrDmtqCb5/5CQn1pgvmi+OYnhJpL5XG+vmjilIvawIDAQAB"
+}

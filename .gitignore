@@ -1,0 +1,17 @@
+run/
+__pycache__/
+*.pyc
+*.pyo
+*.log
+*.sock
+*.pid
+.env
+.env.*
+*.pem
+*.key
+dist/
+node_modules/
+.DS_Store
+*.zip
+.vscode/
+.idea/

@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Max Browser Control</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --border: #334155;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --accent: #10b981;
+      --accent-dark: #065f46;
+      --danger: #ef4444;
+      --amber: #f59e0b;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 12px;
+      width: 360px;
+      background: var(--bg);
+      color: var(--text);
+      font: 13px/1.4 system-ui, -apple-system, sans-serif;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--amber);
+    }
+    .dot.ok { background: var(--accent); box-shadow: 0 0 8px var(--accent); }
+    .dot.err { background: var(--danger); }
+    .ver {
+      font-size: 11px;
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    .card-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .row {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    button {
+      border: 1px solid var(--border);
+      background: #0f172a;
+      color: var(--text);
+      border-radius: 7px;
+      padding: 6px 10px;
+      font: 600 12px/1.2 system-ui, sans-serif;
+      cursor: pointer;
+    }
+    button:hover { border-color: var(--accent); }
+    button.primary { background: var(--accent-dark); border-color: var(--accent); }
+    button.danger { background: rgba(239, 68, 68, 0.16); border-color: var(--danger); color: #fecaca; }
+    .toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+    input[type="text"], textarea {
+      width: 100%;
+      background: #0f172a;
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 6px 8px;
+      font: 12px/1.35 ui-monospace, monospace;
+    }
+    textarea { min-height: 76px; resize: vertical; margin-top: 6px; }
+    .meta { font-size: 11.5px; color: var(--muted); }
+    .status-msg { font-size: 11.5px; color: var(--accent); min-height: 16px; margin-top: 4px; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="title">
+      <span id="conn-dot" class="dot"></span>
+      <span>Max Browser</span>
+    </div>
+    <div class="row" style="gap:6px;">
+      <button id="btn-about" type="button" style="padding:3px 9px;font-size:11px;">О расширении</button>
+      <span id="version-badge" class="ver">v3.0.0</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Подключение и сессии</div>
+    <div id="conn-text" class="meta" style="margin-bottom: 8px;">Проверка...</div>
+    <div id="sessions-text" class="meta" style="margin-bottom: 8px;">Активных сессий: 0</div>
+    <div class="row">
+      <button id="btn-reconnect" class="primary" type="button">Reconnect</button>
+      <button id="btn-reload" type="button">Reload</button>
+      <button id="btn-clear-sessions" class="danger" type="button">Сбросить сессии</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Безопасность</div>
+    <label class="toggle">
+      <span>Экстренная пауза агента</span>
+      <input id="chk-paused" type="checkbox">
+    </label>
+    <label class="toggle">
+      <span>Режим Read-Only (без кликов/ввода)</span>
+      <input id="chk-readonly" type="checkbox">
+    </label>
+    <div class="meta" style="margin-bottom: 4px;">Заблокированные домены (через запятую):</div>
+    <div class="row">
+      <input id="inp-blocked" type="text" placeholder="bank.ru, admin.prod.local" style="flex: 1;">
+      <button id="btn-save-domains" type="button">Сохранить</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Запись действий (Action Recorder)</div>
+    <div class="row">
+      <button id="btn-rec-start" class="primary" type="button">Запись</button>
+      <button id="btn-rec-stop" type="button">Стоп</button>
+      <button id="btn-rec-copy" type="button">Копировать JSON</button>
+      <button id="btn-rec-clear" type="button">Очистить</button>
+    </div>
+    <div id="rec-meta" class="meta" style="margin-top: 6px;">Шагов: 0</div>
+    <textarea id="rec-json" readonly placeholder="Записанный batch JSON появится здесь..."></textarea>
+    <div id="popup-msg" class="status-msg"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Производительность и токены</div>
+    <label class="toggle">
+      <span>Скорость анимаций</span>
+      <select id="sel-speed-mode" style="background:#0f172a;color:#f1f5f9;border:1px solid #334155;border-radius:6px;padding:3px 6px;font-size:12px;">
+        <option value="visual">visual</option>
+        <option value="fast">fast</option>
+        <option value="instant">instant</option>
+      </select>
+    </label>
+    <label class="toggle">
+      <span>Компактные ответы (compact)</span>
+      <input id="chk-compact" type="checkbox">
+    </label>
+    <label class="toggle">
+      <span>Держать CDP-отладчик (4 с)</span>
+      <input id="chk-idle-lease" type="checkbox">
+    </label>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

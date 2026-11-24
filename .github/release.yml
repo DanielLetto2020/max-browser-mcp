@@ -1,0 +1,25 @@
+changelog:
+  categories:
+    - title: Features & New Tools
+      labels:
+        - feature
+        - enhancement
+        - tools
+    - title: Speed & Token Savings
+      labels:
+        - performance
+        - tokens
+    - title: Bug Fixes & Stability
+      labels:
+        - bug
+        - fix
+    - title: Security & Privacy
+      labels:
+        - security
+    - title: Documentation & Maintenance
+      labels:
+        - documentation
+        - chore
+    - title: Other Changes
+      labels:
+        - "*"

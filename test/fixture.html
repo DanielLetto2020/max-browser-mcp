@@ -1,0 +1,24 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Max Browser test fixture</title>
+<style>body{font:16px system-ui;padding:24px}section{height:150px}#hidden{display:none}</style></head><body>
+<h1>Browser test fixture</h1>
+<label>Name <input id="name"></label>
+<label>Password <input id="secret" type="password" value="should-not-leak"></label>
+<button id="save" onclick="document.querySelector('#result').textContent='Saved: '+document.querySelector('#name').value">Save</button>
+<button>Duplicate</button><button>Duplicate</button>
+<div id="result" role="status">Not saved</div>
+<label>Choice <select id="choice"><option value="a">Alpha</option><option value="b">Beta</option></select></label>
+<label>Enabled <input id="enabled" type="checkbox"></label>
+<input id="upload" type="file" multiple aria-label="Upload files">
+<div id="editable" contenteditable aria-label="Editor">Original</div>
+<button disabled id="disabled">Disabled</button><button id="hidden">Hidden</button>
+<div id="shadow"></div>
+<iframe src="frame.html" title="Test frame"></iframe>
+<iframe src="http://localhost:8769/frame.html" title="Cross-origin test frame"></iframe>
+<section></section><section></section><section></section><section></section><section></section>
+<a href="download.txt" download>Download test file</a>
+<script>
+const root=document.querySelector('#shadow').attachShadow({mode:'open'});
+root.innerHTML='<label>Shadow name <input id="shadow-name"></label><button id="shadow-save">Shadow save</button>';
+root.querySelector('button').onclick=()=>root.querySelector('input').value='shadow clicked';
+console.log('fixture ready');
+</script></body></html>

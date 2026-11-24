@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Max Browser v3.0 — Умное управление Chrome для ИИ</title>
+  <link rel="stylesheet" href="about.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a class="brand" href="#top" aria-label="Max Browser">
+        <span class="brand-mark">MB</span>
+        <span>Max Browser</span>
+        <span class="badge-ver">v3.0.0</span>
+      </a>
+      <nav class="nav-links" aria-label="Навигация по странице">
+        <a href="#features">Возможности</a>
+        <a href="#tokens">Экономия токенов</a>
+        <a href="#speed">Скорость</a>
+        <a href="#tools">Все 83 инструмента</a>
+        <a href="#safety">Безопасность</a>
+      </nav>
+      <div class="nav-actions">
+        <button id="btn-theme" class="btn btn-ghost btn-sm" type="button" aria-label="Переключить тему">Светлая тема</button>
+        <a class="btn btn-primary btn-sm nav-cta" href="#tools">Каталог (83)</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">
+            <span class="dot-live"></span>
+            <span>Локальный MCP для Chrome · Без облака</span>
+          </div>
+          <h1>Дайте ИИ руки и глаза в <span class="grad-text">вашем обычном Chrome</span></h1>
+          <p class="hero-lead">
+            Max Browser превращает открытый браузер в точный инструмент автоматизации: ИИ сам открывает сайты, заполняет формы, собирает таблицы, проверяет вёрстку и работает с API, используя ваши текущие вкладки и сессии — при этом тратит в разы меньше токенов.
+          </p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#tools">Смотреть все 83 инструмента</a>
+            <a class="btn" href="#quickstart">Как пользоваться</a>
+          </div>
+          <div class="hero-trust">
+            <div class="metric-chip">
+              <strong>83 тулзы</strong>
+              <span>на все задачи в сети</span>
+            </div>
+            <div class="metric-chip">
+              <strong>до −70%</strong>
+              <span>расхода токенов</span>
+            </div>
+            <div class="metric-chip">
+              <strong>2–5 мс</strong>
+              <span>быстрый отклик DOM</span>
+            </div>
+            <div class="metric-chip">
+              <strong>100% локально</strong>
+              <span>данные на вашем ПК</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-shell" aria-label="Интерактивный пример работы">
+          <div class="demo-topbar">
+            <div class="traffic-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+            <div class="demo-tabs" role="tablist" aria-label="Сценарии автоматизации">
+              <button class="demo-tab" type="button" role="tab" aria-selected="true" data-demo="form">Форма за 1 шаг</button>
+              <button class="demo-tab" type="button" role="tab" aria-selected="false" data-demo="table">Сбор таблицы</button>
+              <button class="demo-tab" type="button" role="tab" aria-selected="false" data-demo="audit">Проверка сайта</button>
+            </div>
+          </div>
+          <div class="demo-body">
+            <div class="demo-prompt">
+              <span class="demo-label">Задача для ИИ простым языком</span>
+              <div id="demo-prompt-text"></div>
+            </div>
+            <span class="demo-label">Что делает Max Browser за один вызов</span>
+            <pre id="demo-code-text" class="demo-code"></pre>
+            <div id="demo-stats-row" class="demo-stats"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Что внутри</div>
+          <h2>Понятно, как помощнику. Точно, как автотесту.</h2>
+          <p class="section-sub">Расширение объединяет четыре сильные стороны в одном окне вашего браузера.</p>
+        </div>
+
+        <div class="bento-grid">
+          <article class="bento-card span-7">
+            <div class="card-icon">01</div>
+            <h3>Надёжные действия вместо «слепых» кликов</h3>
+            <p>Перед кликом Max Browser сам прокрутит страницу к нужной кнопке, проверит 5 точек видимости (что кнопку не перекрыл поп-ап или баннер) и поддержит вложенный Shadow DOM, iFrame и сложные поля с масками ввода.</p>
+            <div class="demo-stats">
+              <span class="pill accent">Умный поиск на RU и EN</span>
+              <span class="pill">Метки на скриншотах (SoM)</span>
+              <span class="pill">Авто-закрытие alert/confirm</span>
+            </div>
+          </article>
+
+          <article class="bento-card span-5">
+            <div class="card-icon">02</div>
+            <h3>Умные формы и выгрузка таблиц</h3>
+            <p>Вместо десятка отдельных кликов модель заполняет форму целиком по подписям полей (<code>fill_form</code>) или выгружает готовую таблицу и карточки каталога в чистый JSON (<code>extract_structured</code>).</p>
+            <div class="demo-stats">
+              <span class="pill info">1 запрос вместо 10 ходов</span>
+              <span class="pill">Чистый Markdown статей</span>
+            </div>
+          </article>
+
+          <article class="bento-card span-4">
+            <div class="card-icon">03</div>
+            <h3>Контроль вёрстки и WCAG</h3>
+            <p>Автоматически проверяет горизонтальные вылеты, битые картинки, обрезанный текст, контрастность цветов и сразу несколько ширин экрана (телефон, планшет, десктоп) плюс сравнение скриншотов до/после.</p>
+          </article>
+
+          <article class="bento-card span-4">
+            <div class="card-icon">04</div>
+            <h3>Сеть, API и сохранение сессий</h3>
+            <p>Ловит ошибки бэкенда, WebSocket и SSE-потоки, подменяет ответы API без правки кода, экспортирует HAR-отчёты и умеет сохранять авторизованную сессию сайта (cookies + storage) для мгновенного возврата.</p>
+          </article>
+
+          <article class="bento-card span-4">
+            <div class="card-icon">05</div>
+            <h3>Визуальный контроль человеком</h3>
+            <p>Управляемая вкладка мягко подсвечивается зелёной рамкой, курсор плавно показывает, куда нажал агент, а в окне расширения всегда есть экстренная пауза, режим «только чтение» и рекордер ваших действий.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="tokens" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Экономия токенов и бюджета</div>
+          <h2>Платите за результат, а не за пересылку лишнего HTML</h2>
+          <p class="section-sub">Каждый мегабайт мусора на веб-странице стоит денег и замедляет ответ модели. В v3.0.0 мы сжали передаваемые данные на каждом уровне.</p>
+        </div>
+
+        <div class="bento-grid">
+          <article class="bento-card span-6">
+            <h3>Сравнение объёма контекста за сценарий</h3>
+            <p>За счёт сжатия описаний, диффов дерева и компактных ответов агент тратит в разы меньше контекстного окна.</p>
+            <div class="compare-list">
+              <div class="compare-row">
+                <div class="compare-top"><span>Профиль <code>core</code> (24 базовых тулзы вместо 83)</span><span>−58% токенов</span></div>
+                <div class="bar-track"><div class="bar-fill" style="width: 42%;"></div></div>
+                <div class="bar-note">Остальные 59 тулз всё равно доступны по имени, не занимая место в системном промпте.</div>
+              </div>
+              <div class="compare-row">
+                <div class="compare-top"><span>Снимок страницы: <code>viewportOnly</code> + <code>diff</code> + короткие <code>ref</code></span><span>−70% текста</span></div>
+                <div class="bar-track"><div class="bar-fill" style="width: 30%;"></div></div>
+                <div class="bar-note">Сворачивает длинные однотипные списки и отправляет только изменившиеся элементы.</div>
+              </div>
+              <div class="compare-row">
+                <div class="compare-top"><span>Скриншоты: <code>preset="fast"</code> + <code>dedupe=true</code></span><span>−60% vision</span></div>
+                <div class="bar-track"><div class="bar-fill" style="width: 40%;"></div></div>
+                <div class="bar-note">Лёгкий JPEG 1024px и автоматический пропуск отправки, если экран не изменился.</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="bento-card span-6">
+            <h3>Что ещё бережёт ваши токены</h3>
+            <p>Эти опции работают в фоне или включаются одним параметром в запросе:</p>
+            <div class="compare-list">
+              <div class="compare-row">
+                <div class="compare-top"><span>Поиск по странице без чтения всей книги: <code>grep</code></span><span>в 5–10× короче</span></div>
+                <div class="bar-note">Возвращает только строки вокруг цены, статуса или ошибки вместо всего текста страницы.</div>
+              </div>
+              <div class="compare-row">
+                <div class="compare-top"><span>Сводка логов: <code>diagnostics_get(summaryOnly)</code></span><span>−85% шума</span></div>
+                <div class="bar-note">Группирует сотни сетевых событий в компактную сводку 4xx/5xx и уникальных ошибок консоли.</div>
+              </div>
+              <div class="compare-row">
+                <div class="compare-top"><span>Сразу следующий снимок: <code>afterSnapshot</code> + <code>compact</code></span><span>−50% ходов ИИ</span></div>
+                <div class="bar-note">Действие и новый снимок возвращаются в одном шаге, убирая лишний цикл «клик → запрос снимка».</div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="speed" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Архитектура скорости</div>
+          <h2>Мгновенная реакция вместо постоянных пауз</h2>
+          <p class="section-sub">Мы убрали лишние пересылки между Python и Chrome и перевели ожидания на события браузера.</p>
+        </div>
+
+        <div class="bento-card span-12">
+          <div class="speed-flow">
+            <div class="flow-step">
+              <strong>1. Постоянный Fast-DOM (2–5 мс)</strong>
+              <span>Лёгкий скрипт <code>fast-dom.js</code> уже дежурит во всех фреймах страницы с момента старта — команды доходят напрямую без повторной инъекции кода.</span>
+            </div>
+            <div class="flow-step">
+              <strong>2. Серверный Batch + DOM Fusion</strong>
+              <span>Цепочки заполнения полей и кликов выполняются за 1 проход внутри Chrome, с ветками <code>when</code>, <code>optional</code>, циклами <code>repeatUntil</code> и <code>parallel</code>.</span>
+            </div>
+            <div class="flow-step">
+              <strong>3. Event-driven + Idle Lease</strong>
+              <span>Ожидания загрузки и появления элементов срабатывают по событиям без сонного опроса, а отладчик CDP можно держать открытым между шагами.</span>
+            </div>
+          </div>
+          <div class="demo-stats" style="margin-top: 14px;">
+            <span class="pill accent">Режимы скорости: visual · fast · instant</span>
+            <span class="pill info">Авто-принятие cookie-баннеров (dismissCookies)</span>
+            <span class="pill">Передача ответов до 32 МБ чанками</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tools" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Полный справочник</div>
+          <h2>Все 83 инструмента понятным языком</h2>
+          <p class="section-sub">Выберите категорию, найдите нужную возможность поиском или отфильтруйте 24 базовых инструмента профиля <code>core</code>.</p>
+        </div>
+
+        <div class="catalog-controls">
+          <div class="search-wrap">
+            <input id="tools-search" class="search-input" type="search" aria-label="Поиск по инструментам" placeholder="Поиск: таблица, форма, скриншот, cookies, pdf, скролл...">
+          </div>
+          <label class="toggle-core">
+            <input id="chk-only-core" type="checkbox">
+            <span>Только базовые Core (24)</span>
+          </label>
+        </div>
+
+        <div id="cat-pills" class="cat-pills" role="group" aria-label="Категории инструментов"></div>
+        <div id="catalog-count" class="catalog-meta">Показано 83 из 83 инструментов</div>
+        <div id="tools-grid" class="tools-grid"></div>
+      </div>
+    </section>
+
+    <section id="safety" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Приватность и управление</div>
+          <h2>Безопасность на вашей стороне</h2>
+          <p class="section-sub">Агент работает только локально через Unix-сокет и уважает установленные вами границы.</p>
+        </div>
+
+        <div class="status-panel">
+          <article class="bento-card">
+            <h3>Умная защита данных</h3>
+            <p>Пароли, одноразовые коды, JWT-токены, секретные параметры URL и <code>Set-Cookie</code> редактируются автоматически до отправки модели, а загрузка системных файлов (<code>~/.ssh</code>, <code>~/.aws</code>, <code>/etc/shadow</code>) заблокирована по умолчанию.</p>
+            <div class="demo-stats">
+              <span class="pill accent">Экстренная пауза в Popup</span>
+              <span class="pill">Режим Read-Only</span>
+              <span class="pill">Чёрный/белый список доменов</span>
+            </div>
+          </article>
+
+          <article class="bento-card" aria-live="polite">
+            <h3>Живой статус расширения</h3>
+            <p>Подключение к Chrome, активные сессии и быстрый выбор скорости работы прямо с этой страницы.</p>
+            <div class="status-kv">
+              <div class="kv-box">
+                <span>Соединение Native Host</span>
+                <strong id="live-conn">Проверка...</strong>
+              </div>
+              <div class="kv-box">
+                <span>Версия и права</span>
+                <strong id="live-ver">v3.0.0</strong>
+              </div>
+              <div class="kv-box">
+                <span>Активные сессии</span>
+                <strong id="live-sess">0 вкладок</strong>
+              </div>
+              <div class="kv-box">
+                <label for="live-speed" style="display:block;font-size:11.5px;color:var(--ink-2);margin-bottom:2px;">Режим скорости</label>
+                <select id="live-speed" style="width:100%;background:var(--surface);border:1px solid var(--hairline-strong);border-radius:6px;padding:3px 6px;font-size:13px;">
+                  <option value="visual">visual (с курсором)</option>
+                  <option value="fast">fast (ускоренный)</option>
+                  <option value="instant">instant (максимум)</option>
+                </select>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="quickstart" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Быстрый старт</div>
+          <h2>Готово к работе за 3 команды</h2>
+          <p class="section-sub">Перезапустите расширение после обновления или выберите облегчённый MCP-профиль при необходимости.</p>
+        </div>
+
+        <div class="bento-grid">
+          <div class="bento-card span-12">
+            <h3>Полезные команды терминала</h3>
+            <div class="cmd-row">
+              <span class="cmd-text">cd ~/.local/share/max-browser && ./install.sh --test --sync-bundle</span>
+              <button class="btn btn-sm copy-btn" type="button" data-copy="cd ~/.local/share/max-browser && ./install.sh --test --sync-bundle">Копировать</button>
+            </div>
+            <div class="cmd-row">
+              <span class="cmd-text">python3 ~/.local/share/max-browser/bridge.py --profile core</span>
+              <button class="btn btn-sm copy-btn" type="button" data-copy="python3 ~/.local/share/max-browser/bridge.py --profile core">Копировать</button>
+            </div>
+            <div class="cmd-row">
+              <span class="cmd-text">python3 ~/max-browser-playground/run_qa.py</span>
+              <button class="btn btn-sm copy-btn" type="button" data-copy="python3 ~/max-browser-playground/run_qa.py">Копировать</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div><strong>Max Browser v3.0.0</strong> · Локальный MCP-мост для Chrome (83 инструмента)</div>
+      <div>Нажмите на иконку расширения на панели Chrome для паузы, режима Read-Only или записи действий.</div>
+    </div>
+  </footer>
+
+  <script src="about.js" defer></script>
+</body>
+</html>
